@@ -473,24 +473,22 @@ body {
 /* ----- ОКНО ПЕРСОНАЖА ----- */
 .char-layout {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
     align-items: flex-start;
 }
 
-.char-stats, .char-resources {
+.char-stats, .char-center, .char-resources {
     width: 200px;
     min-width: 200px;
 }
 
-.char-equip {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+.char-center {
+    border-left: 2px solid #3a2a1a;
+    border-right: 2px solid #3a2a1a;
+    padding: 0 16px;
 }
 
-/* Металлические плашки */
 .metal-plate {
     background: linear-gradient(180deg, #3a2a1a 0%, #1a0e08 100%);
     border: 2px solid #5a3a2a;
@@ -502,14 +500,12 @@ body {
     letter-spacing: 2px;
     font-size: 14px;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
-    position: relative;
 }
 
 .plate-header {
     margin-bottom: 8px;
 }
 
-/* Строки статов */
 .stat-row {
     display: flex;
     justify-content: space-between;
@@ -524,7 +520,6 @@ body {
     font-weight: 700;
 }
 
-/* Ресурсы */
 .res-item {
     padding: 6px 8px;
     font-size: 13px;
@@ -537,72 +532,4 @@ body {
 
 .res-icon {
     font-size: 16px;
-}
-
-/* Слоты экипировки */
-.equip-slot-row {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    align-items: center;
-}
-
-.equip-slot {
-    width: 64px;
-    height: 64px;
-    background: #c8c0b0;
-    border: 3px solid #3a2a1a;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: inset 0 0 0 2px rgba(0,0,0,0.3), 0 3px 10px rgba(0,0,0,0.5);
-    position: relative;
-}
-
-.equip-slot::before {
-    content: '';
-    position: absolute;
-    top: -2px; left: -2px; right: -2px; bottom: -2px;
-    border: 1px solid #5a3a2a;
-    border-radius: 8px;
-    pointer-events: none;
-}
-
-.equip-slot:hover {
-    border-color: #8a6a4a;
-    background: #d8d0c0;
-}
-
-.slot-icon {
-    font-size: 22px;
-}
-
-.slot-label {
-    font-size: 9px;
-    color: #3a2a1a;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 2px;
-}
-
-.mannequin-slot {
-    width: 100px;
-    height: 100px;
-    background: #c8c0b0;
-    border: 3px solid #5a3a2a;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 0 0 2px rgba(0,0,0,0.3), 0 4px 15px rgba(0,0,0,0.6);
-}
-
-.mannequin {
-    font-size: 40px;
-    opacity: 0.6;
 }
