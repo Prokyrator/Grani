@@ -45,18 +45,89 @@ function updateStats() {
     document.getElementById('player-name').innerHTML = player.name + ' <span class="level-badge">[' + player.level + ']</span>';
 }
 
+// ----- ОКНО ПЕРСОНАЖА -----
+function buildCharacterWindow() {
+    return `
+        <div class="char-layout">
+            <!-- ЛЕВАЯ КОЛОНКА — СТАТЫ -->
+            <div class="char-stats">
+                <div class="metal-plate plate-header">Характеристики</div>
+                <div class="stat-row"><span>Сила</span><span>${player.str || 10}</span></div>
+                <div class="stat-row"><span>Ловкость</span><span>${player.dex || 10}</span></div>
+                <div class="stat-row"><span>Интуиция</span><span>${player.int || 10}</span></div>
+                <div class="stat-row"><span>Выносливость</span><span>${player.vit || 10}</span></div>
+                <div class="stat-row"><span>Удача</span><span>${player.luck || 5}</span></div>
+                <div class="metal-plate plate-header" style="margin-top:16px;">Персонаж</div>
+                <div class="stat-row"><span>Имя</span><span>${player.name}</span></div>
+                <div class="stat-row"><span>Уровень</span><span>${player.level}</span></div>
+                <div class="stat-row"><span>Опыт</span><span>${player.exp}/${player.maxExp}</span></div>
+            </div>
+
+            <!-- ЦЕНТР — МАНЕКЕН + ЭКИПИРОВКА -->
+            <div class="char-equip">
+                <div class="equip-slot-row">
+                    <div class="equip-slot" data-slot="helm">
+                        <div class="slot-icon">⛑️</div>
+                        <div class="slot-label">Шлем</div>
+                    </div>
+                </div>
+                <div class="equip-slot-row">
+                    <div class="equip-slot" data-slot="weapon">
+                        <div class="slot-icon">⚔️</div>
+                        <div class="slot-label">Оружие</div>
+                    </div>
+                    <div class="equip-slot" data-slot="chest">
+                        <div class="slot-icon">🛡️</div>
+                        <div class="slot-label">Броня</div>
+                    </div>
+                    <div class="equip-slot" data-slot="shield">
+                        <div class="slot-icon">🔰</div>
+                        <div class="slot-label">Щит</div>
+                    </div>
+                </div>
+                <div class="equip-slot-row">
+                    <div class="equip-slot" data-slot="gloves">
+                        <div class="slot-icon">🧤</div>
+                        <div class="slot-label">Перчатки</div>
+                    </div>
+                    <div class="equip-slot mannequin-slot">
+                        <div class="mannequin">⚔️🛡️</div>
+                    </div>
+                    <div class="equip-slot" data-slot="boots">
+                        <div class="slot-icon">👢</div>
+                        <div class="slot-label">Сапоги</div>
+                    </div>
+                </div>
+                <div class="equip-slot-row">
+                    <div class="equip-slot" data-slot="ring1">
+                        <div class="slot-icon">💍</div>
+                        <div class="slot-label">Кольцо 1</div>
+                    </div>
+                    <div class="equip-slot" data-slot="amulet">
+                        <div class="slot-icon">📿</div>
+                        <div class="slot-label">Амулет</div>
+                    </div>
+                    <div class="equip-slot" data-slot="ring2">
+                        <div class="slot-icon">💍</div>
+                        <div class="slot-label">Кольцо 2</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА — РЕСУРСЫ -->
+            <div class="char-resources">
+                <div class="metal-plate plate-header">Ресурсы</div>
+                <div class="res-item"><span class="res-icon">🪙</span> Золото: ${player.gold}</div>
+                <div class="res-item"><span class="res-icon">✨</span> Кристаллы: ${player.crystals}</div>
+                <div class="res-item"><span class="res-icon">💀</span> Души: ${player.souls}/${player.maxSouls}</div>
+            </div>
+        </div>
+    `;
+}
+
 // ----- КНОПКИ ХЕДЕРА -----
 btnCharacter.addEventListener('click', () => {
-    openModal('Персонаж', `
-        <p><strong>Имя:</strong> ${player.name}</p>
-        <p><strong>Уровень:</strong> ${player.level}</p>
-        <p><strong>HP:</strong> ${player.hp} / ${player.maxHp}</p>
-        <p><strong>MP:</strong> ${player.mp} / ${player.maxMp}</p>
-        <p><strong>Опыт:</strong> ${player.exp} / ${player.maxExp}</p>
-        <p><strong>Золото:</strong> ${player.gold}</p>
-        <p><strong>Кристаллы:</strong> ${player.crystals}</p>
-        <p><strong>Души:</strong> ${player.souls} / ${player.maxSouls}</p>
-    `);
+    openModal('Персонаж', buildCharacterWindow());
 });
 
 btnInventory.addEventListener('click', () => {

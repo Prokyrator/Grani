@@ -16,7 +16,12 @@ const DEFAULT_PLAYER = {
     souls: 0,
     maxSouls: 100,
     col: 10,
-    row: 7
+    row: 7,
+    str: 10,
+    dex: 10,
+    int: 10,
+    vit: 10,
+    luck: 5
 };
 
 let player = {};
