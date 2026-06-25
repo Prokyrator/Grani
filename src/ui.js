@@ -49,24 +49,31 @@ function updateStats() {
 function buildCharacterWindow() {
     return `
         <div class="char-layout">
-            <div class="char-stats">
-                <div class="metal-plate plate-header">Характеристики</div>
-                <div class="stat-row"><span>Сила</span><span>${player.str || 10}</span></div>
-                <div class="stat-row"><span>Ловкость</span><span>${player.dex || 10}</span></div>
-                <div class="stat-row"><span>Интуиция</span><span>${player.int || 10}</span></div>
-                <div class="stat-row"><span>Выносливость</span><span>${player.vit || 10}</span></div>
-                <div class="stat-row"><span>Удача</span><span>${player.luck || 5}</span></div>
+            <!-- КАРТИНКА СЛЕВА -->
+            <div class="char-image">
+                <img src="assets/intfon.png" alt="Персонаж" style="width: 700px; height: auto; display: block;">
             </div>
-            <div class="char-center">
+
+            <!-- ПРАВАЯ ЧАСТЬ -->
+            <div class="char-info">
+                <!-- Персонаж -->
                 <div class="metal-plate plate-header">Персонаж</div>
                 <div class="stat-row"><span>Имя</span><span>${player.name}</span></div>
                 <div class="stat-row"><span>Уровень</span><span>${player.level}</span></div>
                 <div class="stat-row"><span>Опыт</span><span>${player.exp}/${player.maxExp}</span></div>
                 <div class="stat-row"><span>HP</span><span>${player.hp}/${player.maxHp}</span></div>
                 <div class="stat-row"><span>MP</span><span>${player.mp}/${player.maxMp}</span></div>
-            </div>
-            <div class="char-resources">
-                <div class="metal-plate plate-header">Ресурсы</div>
+
+                <!-- Характеристики -->
+                <div class="metal-plate plate-header" style="margin-top: 16px;">Характеристики</div>
+                <div class="stat-row"><span>Сила</span><span>${player.str || 1}</span></div>
+                <div class="stat-row"><span>Ловкость</span><span>${player.dex || 1}</span></div>
+                <div class="stat-row"><span>Интуиция</span><span>${player.int || 1}</span></div>
+                <div class="stat-row"><span>Выносливость</span><span>${player.vit || 1}</span></div>
+                <div class="stat-row"><span>Удача</span><span>${player.luck || 1}</span></div>
+
+                <!-- Ресурсы -->
+                <div class="metal-plate plate-header" style="margin-top: 16px;">Ресурсы</div>
                 <div class="res-item"><span class="res-icon">🪙</span> Золото: ${player.gold}</div>
                 <div class="res-item"><span class="res-icon">✨</span> Кристаллы: ${player.crystals}</div>
                 <div class="res-item"><span class="res-icon">⚖️</span> Вес: ${player.weight}/${player.maxWeight}</div>
@@ -81,7 +88,17 @@ btnCharacter.addEventListener('click', () => {
 });
 
 btnInventory.addEventListener('click', () => {
-    openModal('Инвентарь', '<p>Здесь будет инвентарь.</p>');
+    openModal('Инвентарь', `
+        <div class="char-layout">
+            <div class="char-image">
+                <img src="assets/intfon.png" alt="Инвентарь" style="width: 700px; height: auto; display: block;">
+            </div>
+            <div class="char-info">
+                <div class="metal-plate plate-header">Инвентарь</div>
+                <p style="color: #8a7a6a; margin-top: 12px;">Здесь будет список предметов.</p>
+            </div>
+        </div>
+    `);
 });
 
 // ----- ЭКРАН СОЗДАНИЯ ПЕРСОНАЖА -----
