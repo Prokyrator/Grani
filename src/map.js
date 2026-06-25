@@ -10,7 +10,7 @@ const MAP_WIDTH = MAP_COLS * TILE_SIZE;
 const MAP_HEIGHT = MAP_ROWS * TILE_SIZE;
 const MOVE_DELAY = 3000;
 
-// ----- ТАЙМЕР (временно здесь, потом в ui.js) -----
+// ----- ТАЙМЕР -----
 let canMove = true;
 let timerInterval = null;
 let remainingSeconds = 0;
@@ -45,7 +45,6 @@ canvas.width = MAP_WIDTH;
 canvas.height = MAP_HEIGHT;
 canvas.style.display = 'block';
 canvas.style.margin = '0 auto';
-canvas.style.marginTop = '50px';
 canvas.style.border = '3px solid #5a3a2a';
 canvas.style.borderRadius = '4px';
 canvas.style.boxShadow = '0 0 40px rgba(0,0,0,0.8)';
@@ -79,11 +78,6 @@ function drawMap() {
     ctx.strokeStyle = '#ffaa55';
     ctx.lineWidth = 3;
     ctx.stroke();
-
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 12px "Roboto Condensed", Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText(`${player.col}:${player.row}`, px, py + TILE_SIZE / 2 + 16);
 }
 
 // ----- ДВИЖЕНИЕ -----
@@ -95,12 +89,16 @@ function movePlayer(dCol, dRow) {
     player.col = newCol;
     player.row = newRow;
     drawMap();
+    updateCoords(player.col, player.row);
     console.log(`📍 Игрок: ${player.col}:${player.row}`);
     startCooldown();
 }
 
 // ----- КЛАВИШИ -----
 document.addEventListener('keydown', (e) => {
+    // Не двигаем, если фокус в инпуте
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+
     switch (e.key) {
         case 'ArrowUp': case 'w': case 'W': e.preventDefault(); movePlayer(0, -1); break;
         case 'ArrowDown': case 's': case 'S': e.preventDefault(); movePlayer(0, 1); break;
@@ -112,5 +110,6 @@ document.addEventListener('keydown', (e) => {
 // ----- ЗАПУСК КАРТЫ -----
 timerDisplay.textContent = 'Готов к движению';
 timerDisplay.className = 'ready';
+updateCoords(player.col, player.row);
 drawMap();
 console.log('✅ Карта загружена');
