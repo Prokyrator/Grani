@@ -13,15 +13,15 @@ const DEFAULT_PLAYER = {
     maxExp: 100,
     gold: 0,
     crystals: 0,
-    souls: 0,
-    maxSouls: 100,
+    weight: 0,
+    maxWeight: 100,
     col: 10,
     row: 7,
-    str: 10,
-    dex: 10,
-    int: 10,
-    vit: 10,
-    luck: 5
+    str: 1,
+    dex: 1,
+    int: 1,
+    vit: 1,
+    luck: 1
 };
 
 let player = {};
