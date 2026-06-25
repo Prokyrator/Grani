@@ -68,6 +68,8 @@ function drawMap() {
         }
     }
 
+    if (!player || !player.name) return;
+
     const px = player.col * TILE_SIZE + TILE_SIZE / 2;
     const py = player.row * TILE_SIZE + TILE_SIZE / 2;
 
@@ -90,13 +92,13 @@ function movePlayer(dCol, dRow) {
     player.row = newRow;
     drawMap();
     updateCoords(player.col, player.row);
+    savePlayer();
     console.log(`📍 Игрок: ${player.col}:${player.row}`);
     startCooldown();
 }
 
 // ----- КЛАВИШИ -----
 document.addEventListener('keydown', (e) => {
-    // Не двигаем, если фокус в инпуте
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
 
     switch (e.key) {
@@ -110,6 +112,5 @@ document.addEventListener('keydown', (e) => {
 // ----- ЗАПУСК КАРТЫ -----
 timerDisplay.textContent = 'Готов к движению';
 timerDisplay.className = 'ready';
-updateCoords(player.col, player.row);
 drawMap();
 console.log('✅ Карта загружена');

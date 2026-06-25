@@ -110,6 +110,7 @@ function showCreateScreen() {
         createPlayer(name);
         updateStats();
         updateCoords(player.col, player.row);
+        drawMap();
         closeBtn.style.display = 'block';
         closeModal();
         console.log('✅ Персонаж создан: ' + player.name);

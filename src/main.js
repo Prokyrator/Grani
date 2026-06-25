@@ -4,14 +4,12 @@
 
 console.log('✅ Игра загружена');
 
-// Проверяем, есть ли сохранение
 if (loadPlayer()) {
-    // Игрок уже существует
     updateStats();
     updateCoords(player.col, player.row);
+    drawMap();
     console.log('👤 Загружен персонаж: ' + player.name);
 } else {
-    // Новый игрок — показываем экран создания
     showCreateScreen();
     console.log('🆕 Новый игрок — ожидание создания персонажа');
 }
