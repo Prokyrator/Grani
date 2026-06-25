@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Грани Реальности</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+</head>
+<body>
+
+    <!-- =========================================================== -->
+    <!-- 1. ХЕДЕР -->
+    <!-- =========================================================== -->
+    <header id="header">
+        <div id="player-info">
+            <div id="player-name">Muddy <span class="level-badge">[15]</span></div>
+            <div id="status-bars">
+                <div class="bar-wrapper">
+                    <span class="bar-label">HP</span>
+                    <div class="bar-track"><div class="bar-fill hp-bar" style="width: 75%;"></div></div>
+                    <span class="bar-values">75/100</span>
+                </div>
+                <div class="bar-wrapper">
+                    <span class="bar-label">MP</span>
+                    <div class="bar-track"><div class="bar-fill mp-bar" style="width: 40%;"></div></div>
+                    <span class="bar-values">40/100</span>
+                </div>
+                <div class="bar-wrapper">
+                    <span class="bar-label">EXP</span>
+                    <div class="bar-track"><div class="bar-fill exp-bar" style="width: 65%;"></div></div>
+                    <span class="bar-values">130/200</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="buff-slots">
+            <div class="buff-slot"></div>
+            <div class="buff-slot"></div>
+            <div class="buff-slot"></div>
+            <div class="buff-slot"></div>
+            <div class="buff-slot"></div>
+            <div class="buff-slot"></div>
+            <div class="buff-slot"></div>
+            <div class="buff-slot"></div>
+            <div class="buff-slot"></div>
+            <div class="buff-slot"></div>
+            <div class="buff-slot"></div>
+            <div class="buff-slot"></div>
+        </div>
+        
+        <div id="resources">
+            <div class="resource"><span class="icon">🪙</span> 1515</div>
+            <div class="resource"><span class="icon">✨</span> 851,91</div>
+            <div class="resource"><span class="icon">💀</span> 519/534</div>
+        </div>
+    </header>
+
+    <!-- =========================================================== -->
+    <!-- 2. ОСНОВНАЯ ОБЛАСТЬ -->
+    <!-- =========================================================== -->
+    <main id="main-area">
+
+        <!-- ---- Левая панель (ширина 300px) ---- -->
+        <aside id="left-panel">
+            <div class="panel-header">
+                <button class="panel-btn icon-btn">👁️</button>
+                <button class="panel-btn icon-btn">💀</button>
+            </div>
+            
+            <div class="panel-section">
+                <label class="section-label">Поиск локации</label>
+                <select class="styled-select">
+                    <option>Лесной перекресток</option>
+                    <option>Темные болота</option>
+                    <option>Забытая крепость</option>
+                    <option>Долина ветров</option>
+                </select>
+            </div>
+            
+            <div class="panel-section">
+                <label class="section-label">Найти сектор:</label>
+                <div class="input-group">
+                    <input type="text" class="styled-input" placeholder="9:182" value="9:182">
+                    <button class="search-btn">🔍</button>
+                </div>
+            </div>
+
+            <!-- ---- НОВЫЙ БЛОК: ТАЙМЕР ЗАДЕРЖКИ ---- -->
+            <div class="panel-section" id="timer-section">
+                <label class="section-label">⏳ Задержка движения:</label>
+                <div id="timer-display">Готов к движению</div>
+            </div>
+            
+            <div class="panel-decoration">
+                <span class="skull-icon">☠️</span>
+            </div>
+        </aside>
+
+        <!-- ---- Центральная область (карта) ---- -->
+        <section id="game-container"></section>
+
+        <!-- ---- Правая панель (ширина 300px) ---- -->
+        <aside id="right-panel">
+            <div class="panel-header">
+                <span class="panel-title">👾 Существа на локации</span>
+            </div>
+            <div id="creature-list">
+                <div class="creature-item">
+                    <span class="creature-name">Ассасин</span>
+                    <span class="creature-level">[17]</span>
+                </div>
+                <div class="creature-item">
+                    <span class="creature-name">Группа монстров</span>
+                    <span class="creature-level">[15]</span>
+                </div>
+                <div class="creature-item">
+                    <span class="creature-name">Лесной волк</span>
+                    <span class="creature-level">[8]</span>
+                </div>
+                <div class="creature-item">
+                    <span class="creature-name">Тёмный маг</span>
+                    <span class="creature-level">[22]</span>
+                </div>
+                <div class="creature-item">
+                    <span class="creature-name">Скелет-воин</span>
+                    <span class="creature-level">[12]</span>
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+    <script src="src/main.js"></script>
+</body>
+</html>

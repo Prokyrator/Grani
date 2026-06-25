@@ -1,0 +1,390 @@
+/* ==============================================================
+   style.css - СТИЛИ ИНТЕРФЕЙСА
+   ============================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto Condensed', 'Arial', sans-serif;
+    background: #0a0a0f;
+    color: #c8c0b0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+/* ----- ХЕДЕР ----- */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 16px;
+    background: linear-gradient(180deg, #1a1512 0%, #2a221c 100%);
+    border-bottom: 3px solid #5a3a2a;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    min-height: 76px;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+#player-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 220px;
+}
+
+#player-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #e8d5b8;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 1px;
+}
+
+.level-badge {
+    font-size: 18px;
+    color: #ff8844;
+    background: rgba(40, 20, 10, 0.8);
+    padding: 0 8px;
+    border-radius: 4px;
+    border: 1px solid #6a3a1a;
+}
+
+#status-bars {
+    display: flex;
+    gap: 12px;
+    margin-top: 2px;
+}
+
+.bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.bar-label {
+    color: #aaa;
+    min-width: 22px;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.bar-track {
+    width: 80px;
+    height: 12px;
+    background: #1a1210;
+    border-radius: 6px;
+    border: 1px solid #3a2a1a;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.3s ease;
+}
+
+.hp-bar { background: linear-gradient(90deg, #8b0000, #cc2233); }
+.mp-bar { background: linear-gradient(90deg, #003366, #4488dd); }
+.exp-bar { background: linear-gradient(90deg, #2a5a1a, #55aa33); }
+
+.bar-values {
+    color: #aaa;
+    font-size: 10px;
+    min-width: 44px;
+    text-align: right;
+}
+
+#buff-slots {
+    display: flex;
+    gap: 4px;
+    padding: 4px 12px;
+    background: rgba(10, 8, 6, 0.6);
+    border-radius: 8px;
+    border: 1px solid #3a2a1a;
+}
+
+.buff-slot {
+    width: 32px;
+    height: 32px;
+    background: rgba(20, 15, 10, 0.8);
+    border-radius: 4px;
+    border: 1px solid #3a2a1a;
+}
+
+#resources {
+    display: flex;
+    gap: 16px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.resource {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(10, 8, 6, 0.6);
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid #3a2a1a;
+    color: #e8d5b8;
+}
+
+.resource .icon {
+    font-size: 18px;
+}
+
+/* ----- ОСНОВНАЯ ОБЛАСТЬ ----- */
+#main-area {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    background: #0a0806;
+}
+
+/* ----- ЛЕВАЯ ПАНЕЛЬ (ШИРИНА 300px) ----- */
+#left-panel {
+    width: 300px;
+    min-width: 300px;
+    background: linear-gradient(180deg, #1a1512 0%, #0f0c0a 100%);
+    border-right: 3px solid #3a2a1a;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.panel-header {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #2a1a12;
+}
+
+.icon-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    background: linear-gradient(180deg, #2a1a12, #1a0e08);
+    border: 2px solid #3a2a1a;
+    border-radius: 8px;
+    color: #c8b8a8;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.icon-btn:hover {
+    border-color: #6a4a2a;
+    color: #ff8844;
+}
+
+.panel-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #8a7a6a;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.styled-select {
+    background: #0f0c0a;
+    color: #c8b8a8;
+    border: 2px solid #2a1a12;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+}
+
+.styled-select:hover {
+    border-color: #5a3a2a;
+}
+
+.input-group {
+    display: flex;
+    gap: 4px;
+}
+
+.styled-input {
+    flex: 1;
+    background: #0f0c0a;
+    color: #c8b8a8;
+    border: 2px solid #2a1a12;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+}
+
+.styled-input:hover {
+    border-color: #5a3a2a;
+}
+
+.search-btn {
+    background: #2a1a12;
+    border: 2px solid #3a2a1a;
+    border-radius: 6px;
+    color: #c8b8a8;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-btn:hover {
+    border-color: #6a4a2a;
+    background: #3a2a1a;
+}
+
+/* ----- НОВЫЙ БЛОК: ТАЙМЕР ЗАДЕРЖКИ ----- */
+#timer-section {
+    margin-top: 4px;
+    padding: 8px 10px;
+    background: rgba(10, 8, 6, 0.5);
+    border-radius: 6px;
+    border: 1px solid #2a1a12;
+}
+
+#timer-display {
+    font-size: 18px;
+    font-weight: 700;
+    color: #55aa33;
+    text-align: center;
+    padding: 4px 0;
+    font-family: 'Roboto Condensed', monospace;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+#timer-display.waiting {
+    color: #ff8844;
+}
+
+#timer-display.ready {
+    color: #55aa33;
+}
+
+.panel-decoration {
+    margin-top: auto;
+    text-align: center;
+    padding: 12px 0;
+    border-top: 1px solid #2a1a12;
+}
+
+.skull-icon {
+    font-size: 32px;
+    opacity: 0.3;
+    filter: grayscale(1);
+}
+
+/* ----- ЦЕНТРАЛЬНАЯ ОБЛАСТЬ (КАРТА) ----- */
+#game-container {
+    flex: 1;
+    background: #0a0806;
+    position: relative;
+    overflow: hidden;
+    border-left: 2px solid #2a1a12;
+    border-right: 2px solid #2a1a12;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* ----- ПРАВАЯ ПАНЕЛЬ (ШИРИНА 300px) ----- */
+#right-panel {
+    width: 300px;
+    min-width: 300px;
+    background: linear-gradient(180deg, #1a1512 0%, #0f0c0a 100%);
+    border-left: 3px solid #3a2a1a;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.6);
+}
+
+#right-panel .panel-header {
+    justify-content: flex-start;
+    border-bottom: 1px solid #2a1a12;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.panel-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e8d5b8;
+    letter-spacing: 1px;
+}
+
+#creature-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: 4px;
+}
+
+#creature-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+#creature-list::-webkit-scrollbar-track {
+    background: #0a0806;
+}
+
+#creature-list::-webkit-scrollbar-thumb {
+    background: #3a2a1a;
+    border-radius: 4px;
+}
+
+.creature-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    background: rgba(20, 15, 10, 0.6);
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+
+.creature-item:hover {
+    background: rgba(40, 30, 20, 0.8);
+    border-color: #5a3a2a;
+    transform: translateX(4px);
+}
+
+.creature-name {
+    color: #d8c8b8;
+}
+
+.creature-level {
+    color: #ff8844;
+    font-weight: 700;
+    font-size: 12px;
+}
