@@ -57,4 +57,24 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
 });
 
+
+
+// ----- СТАТЫ В ХЕДЕРЕ -----
+function updateStats() {
+    document.getElementById('hp-bar').style.width = (player.hp / player.maxHp * 100) + '%';
+    document.getElementById('hp-values').textContent = player.hp + '/' + player.maxHp;
+
+    document.getElementById('mp-bar').style.width = (player.mp / player.maxMp * 100) + '%';
+    document.getElementById('mp-values').textContent = player.mp + '/' + player.maxMp;
+
+    document.getElementById('exp-bar').style.width = (player.exp / player.maxExp * 100) + '%';
+    document.getElementById('exp-values').textContent = player.exp + '/' + player.maxExp;
+
+    document.getElementById('player-name').innerHTML = player.name + ' <span class="level-badge">[' + player.level + ']</span>';
+}
+
+updateStats();
+
+
+
 console.log('✅ UI загружен');
